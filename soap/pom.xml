@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ptit.onluyen</groupId>
+    <artifactId>soap-exercises</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Sửa thành IP máy thi trước khi build -->
+        <exam.ip>36.50.135.242</exam.ip>
+        <exam.soap.port>2221</exam.soap.port>
+    </properties>
+
+    <dependencies>
+        <!-- JAX-WS RI 2.3.x dùng namespace javax.xml.ws — khớp với wsimport mặc định -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.3.5</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Sinh client stub từ WSDL khi mvn generate-sources.
+                     LƯU Ý: cần kết nối tới <exam.ip>:2221 — nếu không reach được,
+                     bỏ comment khối <executions> hoặc chạy thủ công wsimport. -->
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3.5</version>
+                <executions>
+                    <execution>
+                        <id>wsimport-q2211</id>
+                        <goals><goal>wsimport</goal></goals>
+                        <configuration>
+                            <wsdlUrls>
+                                <wsdlUrl>http://${exam.ip}:${exam.soap.port}/DataService?wsdl</wsdlUrl>
+                            </wsdlUrls>
+                            <packageName>soap.q2211.generated</packageName>
+                            <sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
+                            <keep>true</keep>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>wsimport-q2221</id>
+                        <goals><goal>wsimport</goal></goals>
+                        <configuration>
+                            <wsdlUrls>
+                                <wsdlUrl>http://${exam.ip}:${exam.soap.port}/CharacterService?wsdl</wsdlUrl>
+                            </wsdlUrls>
+                            <packageName>soap.q2221.generated</packageName>
+                            <sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
+                            <keep>true</keep>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>wsimport-q2231</id>
+                        <goals><goal>wsimport</goal></goals>
+                        <configuration>
+                            <wsdlUrls>
+                                <wsdlUrl>http://${exam.ip}:${exam.soap.port}/ObjectService?wsdl</wsdlUrl>
+                            </wsdlUrls>
+                            <packageName>soap.q2231.generated</packageName>
+                            <sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
+                            <keep>true</keep>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

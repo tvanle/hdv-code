@@ -1,0 +1,17 @@
+# Build outputs
+out/
+target/
+*.class
+
+# Downloaded dependencies (Maven manages these)
+lib/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS / shell
+*.stackdump
+.DS_Store
+Thumbs.db
