@@ -29,7 +29,18 @@
     </dependencies>
 
     <build>
+        <!-- File Q*.java nằm thẳng tại soap/ -->
+        <sourceDirectory>${project.basedir}</sourceDirectory>
         <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <includes>
+                        <include>Q*.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
             <plugin>
                 <!-- Sinh client stub từ WSDL khi mvn generate-sources.
                      LƯU Ý: cần kết nối tới <exam.ip>:2221 — nếu không reach được,

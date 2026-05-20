@@ -23,4 +23,20 @@
             <version>20240303</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <!-- Source nằm thẳng tại rest/ — Q*.java mỗi file 1 bài -->
+        <sourceDirectory>${project.basedir}</sourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <includes>
+                        <include>Q*.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
