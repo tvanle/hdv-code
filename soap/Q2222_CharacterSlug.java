@@ -3,7 +3,7 @@ import soap.q2221.generated.CharacterService;
 import soap.q2221.generated.SoapCharacterService;
 
 public class Q2222_CharacterSlug {
-    static final String STUDENT_CODE = "B21DCCN001";   // TODO
+    static final String STUDENT_CODE = "B22DCCN863";   // TODO
     static final String Q_CODE       = "TODO_qCode";   // TODO
 
     public static void main(String[] args) {

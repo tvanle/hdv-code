@@ -3,7 +3,7 @@ import soap.q2231.generated.SoapObjectService;
 import soap.q2231.generated.ProductY;
 
 public class Q2231_ObjectFinalPrice {
-    static final String STUDENT_CODE = "B21DCCN001";   // TODO
+    static final String STUDENT_CODE = "B22DCCN863";   // TODO
     static final String Q_CODE       = "z7a6WujT";     // TODO
 
     public static void main(String[] args) {

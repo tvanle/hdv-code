@@ -3,7 +3,7 @@ import soap.q2211.generated.DataService;
 import soap.q2211.generated.SoapDataService;
 
 public class Q2211_DataSumOfIntegers {
-    static final String STUDENT_CODE = "B21DCCN001";   // TODO
+    static final String STUDENT_CODE = "B22DCCN863";   // TODO
     static final String Q_CODE       = "irq9etkc";     // TODO
 
     public static void main(String[] args) {

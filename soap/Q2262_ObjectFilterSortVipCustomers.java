@@ -6,7 +6,7 @@ import soap.q2231.generated.ObjectService;
 import soap.q2231.generated.SoapObjectService;
 
 public class Q2262_ObjectFilterSortVipCustomers {
-    static final String STUDENT_CODE = "B21DCCN001";   // TODO
+    static final String STUDENT_CODE = "B22DCCN863";   // TODO
     static final String Q_CODE       = "TODO_qCode";   // TODO
 
     public static void main(String[] args) {

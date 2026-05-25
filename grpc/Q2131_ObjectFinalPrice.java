@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class Q2131_ObjectFinalPrice {
     static final String EXAM_IP        = "36.50.135.242";
     static final int    EXAM_PORT      = 2240;
-    static final String STUDENT_CODE   = "B21DCCN001";   // TODO
+    static final String STUDENT_CODE   = "B22DCCN863";   // TODO
     static final String QUESTION_ALIAS = "WEFtuyKl";     // TODO
 
     public static void main(String[] args) throws InterruptedException {

@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class Q2121_CharacterSortWords {
     static final String EXAM_IP        = "36.50.135.242";
     static final int    EXAM_PORT      = 2240;
-    static final String STUDENT_CODE   = "B21DCCN001";   // TODO
+    static final String STUDENT_CODE   = "B22DCCN863";   // TODO
     static final String QUESTION_ALIAS = "Tqy8zjYo";     // TODO
 
     public static void main(String[] args) throws InterruptedException {

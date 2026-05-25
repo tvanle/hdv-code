@@ -6,7 +6,7 @@ import soap.q2221.generated.CharacterService;
 import soap.q2221.generated.SoapCharacterService;
 
 public class Q2252_CharacterMaskSortBySeverity {
-    static final String STUDENT_CODE = "B21DCCN001";   // TODO
+    static final String STUDENT_CODE = "B22DCCN863";   // TODO
     static final String Q_CODE       = "TODO_qCode";   // TODO
 
     static final String EMAIL_RE = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}";

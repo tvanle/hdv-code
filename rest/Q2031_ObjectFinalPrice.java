@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class Q2031_ObjectFinalPrice {
     static final String EXAM_IP      = "36.50.135.242";
-    static final String STUDENT_CODE = "B21DCCN001";   // TODO
+    static final String STUDENT_CODE = "B22DCCN863";   // TODO
     static final String Q_CODE       = "s543QlZR";     // TODO
     static final String BASE         = "http://" + EXAM_IP + ":2230/api/rest/object";
 
