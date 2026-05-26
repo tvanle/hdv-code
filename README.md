@@ -1,308 +1,294 @@
-# Ôn luyện môn Phát triển hướng dịch vụ — PTIT
+# Ôn luyện môn Phát triển hướng dịch vụ — PTIT (Python)
 
-Bài tập JNP chia theo 3 protocol. Mỗi file Java = 1 bài, tên file = `Q<id>_<Title>.java` để dễ track.
+Bài tập JNP chia theo 3 protocol. Mỗi file `Q<id>_<Title>.py` = 1 bài, tên file = tên class, để thẳng tại category root cho dễ track.
 
 ## Layout
 
 ```
 hdv-code/
-├── rest/                                       Maven · org.json
-│   ├── pom.xml
+├── rest/                                       requests
+│   ├── requirements.txt
 │   ├── bai-tap/                                9 file md đề gốc
-│   ├── Q2011_DataSumOfIntegers.java
-│   ├── Q2012_DataPaymentReconciliation.java
-│   ├── Q2021_CharacterSortWords.java
-│   ├── Q2022_CharacterMaskPII.java
-│   ├── Q2031_ObjectFinalPrice.java
-│   ├── Q2032_ObjectShippingQuote.java
-│   ├── Q2041_MethodPut.java
-│   ├── Q2051_HeaderChecksum.java
-│   ├── Q2061_PathProductQuery.java
-│   ├── Q2071_MethodPutAudit.java
-│   ├── Q2072_MethodPatchIfMatch.java
-│   ├── Q2081_HeaderChecksumReplay.java
-│   ├── Q2082_HeaderHmacSignature.java
-│   ├── Q2091_PathInvoiceQuery.java
-│   └── Q2092_PathOverdueCustomer.java
-├── grpc/                                       Maven · grpc-java + protoc plugin
-│   ├── pom.xml
-│   ├── bai-tap/                                3 file md
+│   ├── Q2011_DataSumOfIntegers.py
+│   ├── Q2012_DataPaymentReconciliation.py
+│   ├── Q2021_CharacterSortWords.py
+│   ├── Q2022_CharacterMaskPII.py
+│   ├── Q2031_ObjectFinalPrice.py
+│   ├── Q2032_ObjectShippingQuote.py
+│   ├── Q2041_MethodPut.py
+│   ├── Q2051_HeaderChecksum.py
+│   ├── Q2061_PathProductQuery.py
+│   ├── Q2071_MethodPutAudit.py
+│   ├── Q2072_MethodPatchIfMatch.py
+│   ├── Q2081_HeaderChecksumReplay.py
+│   ├── Q2082_HeaderHmacSignature.py
+│   ├── Q2091_PathInvoiceQuery.py
+│   └── Q2092_PathOverdueCustomer.py
+├── grpc/                                       grpcio + grpcio-tools
+│   ├── requirements.txt
+│   ├── gen_proto.py                            chạy 1 lần để sinh *_pb2.py
 │   ├── proto/judge.proto
-│   ├── Q2111_DataSumOfIntegers.java
-│   ├── Q2121_CharacterSortWords.java
-│   └── Q2131_ObjectFinalPrice.java
-└── soap/                                       Maven · jaxws-rt + wsimport
-    ├── pom.xml
-    ├── README.md                               ghi chú API thực tế vs đề md
+│   ├── proto/typed_judge.proto
+│   ├── bai-tap/                                3 file md
+│   ├── Q2111_DataSumOfIntegers.py … Q2133_ObjectEnrollment.py  (9 file)
+└── soap/                                       zeep (runtime WSDL)
+    ├── requirements.txt
     ├── bai-tap/                                3 file md
-    ├── Q2211_DataSumOfIntegers.java
-    ├── Q2221_CharacterReverseString.java
-    └── Q2231_ObjectFinalPrice.java
+    └── Q2211_DataSumOfIntegers.py … Q2262_ObjectFilterSortVipCustomers.py  (15 file)
 ```
 
 ## Trước khi chạy
 
-Trong từng `Q*.java`, sửa:
+Trong từng `Q*.py`, sửa:
 - `EXAM_IP` — IP máy thi
 - `STUDENT_CODE` — mã sinh viên
 - `Q_CODE` / `QUESTION_ALIAS` — qCode/qAlias ghi trong đề
 
-## Cách chạy
+## Setup môi trường
 
-```bash
-# REST
-cd rest
-mvn -q compile
-mvn -q exec:java -Dexec.mainClass=Q2011_DataSumOfIntegers
+```powershell
+# Windows PowerShell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 
-# gRPC (Maven sinh stub từ proto/judge.proto)
-cd grpc
-mvn -q compile
-mvn -q exec:java -Dexec.mainClass=Q2111_DataSumOfIntegers
-
-# SOAP (Maven chạy wsimport tự sinh stub từ WSDL — cần reach exam server)
-cd soap
-mvn -q compile
-mvn -q exec:java -Dexec.mainClass=Q2211_DataSumOfIntegers
+# Cài dependencies cho từng folder bạn dùng
+pip install -r rest\requirements.txt
+pip install -r grpc\requirements.txt
+pip install -r soap\requirements.txt
 ```
 
-## Yêu cầu môi trường
+Yêu cầu: **Python ≥ 3.9**.
 
-| Mảng | Yêu cầu |
-|------|--------|
-| **JDK** | Java 11 trở lên |
-| **Maven** | 3.6+ |
-| **gRPC** | Maven tự download `protoc` + `protoc-gen-grpc-java` theo OS |
-| **SOAP** | Cần reach `<exam.ip>:2221/<Service>?wsdl` lúc build (wsimport sinh stub) |
+## Cách chạy
+
+```powershell
+# REST — chạy thẳng
+cd rest
+python .\Q2011_DataSumOfIntegers.py
+
+# gRPC — sinh stub 1 lần rồi chạy
+cd ..\grpc
+python gen_proto.py           # tạo judge_pb2.py / typed_judge_pb2.py (+ *_grpc.py)
+python .\Q2111_DataSumOfIntegers.py
+
+# SOAP — zeep tự load WSDL runtime, không cần gen stub
+cd ..\soap
+python .\Q2211_DataSumOfIntegers.py
+```
 
 ## Lưu ý đề thi
 
-- `discount = %` (Q2031, Q2231) vs `discount = số tiền` (Q2131) — đọc kỹ đề.
+- `discount = %` (Q2031, Q2231, Q2261) vs `discount = số tiền` (Q2131, Q2232) — đọc kỹ đề.
 - Sort **case-sensitive** (Q2021) vs **case-insensitive** (Q2121).
 - Tất cả theo mô hình **2 phase**: GET/Request nhận `requestId` → tính → POST/PUT/Submit gửi `answer`.
-- REST trả `{"status":"AC"}`; SOAP trả `void` (server không trả status string).
+- REST trả `{"status":"AC"}`; SOAP `submit*` return `None` (server không trả status string).
 
 ---
 
 # 📋 Cheat-sheet cú pháp & cách kết nối
 
-## 1. REST — `java.net.http.HttpClient` + `org.json`
+## 1. REST — `requests`
 
-### Imports chuẩn (luôn cần)
-```java
-import java.net.URI;
-import java.net.URLEncoder;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
-import org.json.JSONArray;
-import org.json.JSONObject;
+### Imports & hằng số chuẩn
+```python
+import requests
+
+EXAM_IP      = "36.50.135.242"
+STUDENT_CODE = "B22DCCN863"
+Q_CODE       = "xxxxxx"
+BASE         = f"http://{EXAM_IP}:2230/api/rest/<group>"
+# <group> = data | character | object | method | header | path
 ```
 
-### Hằng số chuẩn
-```java
-static final String EXAM_IP      = "36.50.135.242";
-static final String STUDENT_CODE = "B22DCCN863";
-static final String Q_CODE       = "xxxxxx";    // qCode/qAlias ghi trong đề
-static final String BASE         = "http://" + EXAM_IP + ":2230/api/rest/<group>";
-// <group> = data | character | object | method | header | path
+### Mẫu Phase-1 (GET) — dùng chung mọi bài
+```python
+r = requests.get(BASE, params={"studentCode": STUDENT_CODE, "qCode": Q_CODE})
+body       = r.json()
+request_id = body["requestId"]
+data       = body["data"]    # list | dict tuỳ bài
 ```
 
-### Mẫu Phase-1 (GET request) — dùng chung mọi bài REST
-```java
-HttpClient client = HttpClient.newHttpClient();
-String getUrl = BASE
-        + "?studentCode=" + URLEncoder.encode(STUDENT_CODE, StandardCharsets.UTF_8)
-        + "&qCode="       + URLEncoder.encode(Q_CODE,       StandardCharsets.UTF_8);
-
-HttpResponse<String> getRes = client.send(
-        HttpRequest.newBuilder().uri(URI.create(getUrl)).GET().build(),
-        HttpResponse.BodyHandlers.ofString());
-
-JSONObject body      = new JSONObject(getRes.body());
-String     requestId = body.getString("requestId");
-// body.getJSONArray("data") | body.getJSONObject("data")
-```
+`requests` **tự lo URL-encoding** khi truyền qua `params={...}` — không cần `urlencode` thủ công.
 
 ### Các biến thể Phase-2 (submit)
-| Dạng bài | HTTP method | Body |
-|---------|-------------|------|
-| `data/character/object` (Q2011-Q2032) | `POST /submit` | `{studentCode, qCode, requestId, answer}` |
-| `method/PUT` (Q2041, Q2071) | `PUT /{requestId}` | `{studentCode, qCode, answer}` |
-| `method/PATCH + If-Match` (Q2072) | `PATCH /{requestId}` + header `If-Match: <etag>` | `{studentCode, qCode, answer:{...}}` |
-| `header/checksum` (Q2051) | `POST /submit` + header `X-Checksum: <hex>` | `{studentCode, qCode, requestId, answer}` |
-| `header/HMAC` (Q2082) | `POST /submit` + header `X-Signature: <hex>` | `{studentCode, qCode, requestId}` |
-| `path/invoice` (Q2091) | `GET /{requestId}` rồi `POST /submit` | `{...answer}` |
+
+| Dạng bài | Cách gọi |
+|---------|----------|
+| `data/character/object` (Q2011-Q2032) | `requests.post(f"{BASE}/submit", json={...})` |
+| `method/PUT` (Q2041, Q2071) | `requests.put(f"{BASE}/{request_id}", json={...})` |
+| `method/PATCH + If-Match` (Q2072) | `requests.patch(f"{BASE}/{request_id}", json={...}, headers={"If-Match": etag})` |
+| `header/checksum` (Q2051) | `requests.post(f"{BASE}/submit", json={...}, headers={"X-Checksum": chk})` |
+| `header/HMAC` (Q2082) | `requests.post(f"{BASE}/submit", json={...}, headers={"X-Signature": sig})` |
+| `path/query` (Q2061, Q2091) | `requests.get(f"{BASE}/{id}", params={...})` (Phase 2 cũng là GET) |
 
 **Skeleton POST submit:**
-```java
-JSONObject submit = new JSONObject()
-        .put("studentCode", STUDENT_CODE)
-        .put("qCode",       Q_CODE)
-        .put("requestId",   requestId)
-        .put("answer",      sum);
-
-HttpResponse<String> postRes = client.send(
-        HttpRequest.newBuilder()
-                .uri(URI.create(BASE + "/submit"))
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(submit.toString()))
-                .build(),
-        HttpResponse.BodyHandlers.ofString());
+```python
+submit = {
+    "studentCode": STUDENT_CODE,
+    "qCode":       Q_CODE,
+    "requestId":   request_id,
+    "answer":      result,
+}
+r = requests.post(f"{BASE}/submit", json=submit)
+print("Server response:", r.text)
 ```
 
-**Skeleton PATCH (Q2072):**
-```java
-.method("PATCH", BodyPublishers.ofString(submit.toString()))
-.header("If-Match", etag)
+**HMAC-SHA256 (Q2082):**
+```python
+import hmac, hashlib
+
+payload = f"{nonce}:{'|'.join(events)}:{STUDENT_CODE.upper()}"
+sig = hmac.new(
+    signing_key.encode("utf-8"),
+    payload.encode("utf-8"),
+    hashlib.sha256,
+).hexdigest()
 ```
 
-**Skeleton HMAC-SHA256 (Q2082):**
-```java
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-
-Mac mac = Mac.getInstance("HmacSHA256");
-mac.init(new SecretKeySpec(signingKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
-byte[] sig = mac.doFinal(payload.getBytes(StandardCharsets.UTF_8));
-
-StringBuilder hex = new StringBuilder();
-for (byte b : sig) hex.append(String.format("%02x", b));
-String signature = hex.toString();
+**Đọc response header (Q2051/Q2081):**
+```python
+checksum = r.headers.get("X-Checksum")
 ```
 
 ---
 
-## 2. gRPC — `io.grpc:grpc-netty-shaded` + auto-gen stubs
+## 2. gRPC — `grpcio` + stub auto-gen
 
-### Imports chuẩn
-```java
-import GRPC.JudgeRequest;
-import GRPC.JudgeResponse;
-import GRPC.JudgeServiceGrpc;
-import GRPC.JudgeServiceGrpc.JudgeServiceBlockingStub;
-import GRPC.SubmitRequest;
-import GRPC.SubmitResponse;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
-import java.util.concurrent.TimeUnit;
+### Sinh stub 1 lần
+```powershell
+cd grpc
+python gen_proto.py
+# Tạo 4 file: judge_pb2.py / judge_pb2_grpc.py / typed_judge_pb2.py / typed_judge_pb2_grpc.py
+```
+
+### Imports
+```python
+import grpc
+import judge_pb2
+import judge_pb2_grpc
+# Bài hard (Q2112/Q2113/Q2122/Q2123/Q2132/Q2133) thêm:
+import typed_judge_pb2
+import typed_judge_pb2_grpc
 ```
 
 ### Hằng số
-```java
-static final String EXAM_IP        = "36.50.135.242";
-static final int    EXAM_PORT      = 2240;
-static final String STUDENT_CODE   = "B22DCCN863";
-static final String QUESTION_ALIAS = "xxxxx";
+```python
+EXAM_IP        = "36.50.135.242"
+EXAM_PORT      = 2240
+STUDENT_CODE   = "B22DCCN863"
+QUESTION_ALIAS = "xxxxx"
 ```
 
-### Kết nối + cleanup
-```java
-ManagedChannel channel = ManagedChannelBuilder
-        .forAddress(EXAM_IP, EXAM_PORT)
-        .usePlaintext()
-        .build();
-try {
-    JudgeServiceBlockingStub stub = JudgeServiceGrpc.newBlockingStub(channel);
-    // ... request + submit ...
-} finally {
-    channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
-}
+### Kết nối (context manager tự cleanup)
+```python
+with grpc.insecure_channel(f"{EXAM_IP}:{EXAM_PORT}") as channel:
+    stub = judge_pb2_grpc.JudgeServiceStub(channel)
+    # ... request + submit ...
 ```
 
-### Hai họ service trong project
+### Hai họ service
 
 | Service | Bài dùng | Đặc điểm |
 |---------|---------|---------|
-| `JudgeService` (simple) | Q2111, Q2121, Q2131 | `data` & `answer` đều là **String**, tự parse trong client |
-| `TypedJudgeService` (oneof) | Q2112, Q2113, Q2122, Q2123, Q2132, Q2133 | Server trả `TypedData` chứa `oneof` payload (TransactionRiskBatchData, SensorTelemetryData, TextBatchData, ShippingQuoteData, EnrollmentData) — client gửi `TypedAnswer` cùng kiểu |
+| `JudgeService` (simple) | Q2111, Q2121, Q2131 | `data` & `answer` đều là **string**, tự parse |
+| `TypedJudgeService` (oneof) | Q2112, Q2113, Q2122, Q2123, Q2132, Q2133 | Server trả `TypedData` với `oneof` payload (transaction_risk, sensor_telemetry, text_batch, shipping_quote, enrollment) |
 
 **Skeleton `JudgeService`:**
-```java
-JudgeResponse resp = stub.request(JudgeRequest.newBuilder()
-        .setStudentCode(STUDENT_CODE)
-        .setQuestionAlias(QUESTION_ALIAS)
-        .build());
-String requestId = resp.getRequestId();
-String data      = resp.getData();       // String — split(",") rồi parse
+```python
+resp = stub.Request(judge_pb2.JudgeRequest(
+    student_code=STUDENT_CODE,
+    question_alias=QUESTION_ALIAS,
+))
+request_id = resp.request_id
+data       = resp.data       # string — split(",") rồi parse
 
-SubmitResponse sr = stub.submit(SubmitRequest.newBuilder()
-        .setStudentCode(STUDENT_CODE)
-        .setQuestionAlias(QUESTION_ALIAS)
-        .setRequestId(requestId)
-        .setAnswer(answerString)
-        .build());
+sr = stub.Submit(judge_pb2.SubmitRequest(
+    student_code=STUDENT_CODE,
+    question_alias=QUESTION_ALIAS,
+    request_id=request_id,
+    answer=str(result),
+))
+print(sr.status, sr.message)
 ```
 
 **Skeleton `TypedJudgeService`:**
-```java
-TypedData resp = stub.requestTyped(TypedRequest.newBuilder()
-        .setStudentCode(STUDENT_CODE)
-        .setQuestionAlias(QUESTION_ALIAS)
-        .build());
-String requestId    = resp.getRequestId();
-SensorTelemetryData t = resp.getSensorTelemetry();   // chọn 1 trong các oneof
+```python
+resp = stub.RequestTyped(typed_judge_pb2.TypedRequest(
+    student_code=STUDENT_CODE,
+    question_alias=QUESTION_ALIAS,
+))
+request_id = resp.request_id
+t          = resp.sensor_telemetry   # chọn 1 trong các oneof
 
-// ... tính toán ...
+# ... tính ...
 
-SensorTelemetryAnswer answer = SensorTelemetryAnswer.newBuilder()
-        .setAverage(avg).setP95(p95).setAnomalyCount(n).build();
-
-SubmitResponse sr = stub.submitTyped(TypedAnswer.newBuilder()
-        .setStudentCode(STUDENT_CODE)
-        .setQuestionAlias(QUESTION_ALIAS)
-        .setRequestId(requestId)
-        .setSensorTelemetry(answer)        // setter tương ứng oneof
-        .build());
+answer = typed_judge_pb2.SensorTelemetryAnswer(
+    average=avg, p95=p95, anomaly_count=n,
+)
+sr = stub.SubmitTyped(typed_judge_pb2.TypedAnswer(
+    student_code=STUDENT_CODE,
+    question_alias=QUESTION_ALIAS,
+    request_id=request_id,
+    sensor_telemetry=answer,          # setter tương ứng oneof
+))
 ```
 
-**Lưu ý gen stub:** chạy `mvn -q compile` trong `grpc/` → Maven gọi `protoc` sinh class trong `target/generated-sources/protobuf/`. Package gen là `GRPC` (theo `option java_package` trong `.proto`).
+> **Naming convention**: proto dùng snake_case → Python dùng snake_case (`request_id`, `student_code`). RPC method giữ PascalCase (`stub.Request`, `stub.SubmitTyped`).
 
 ---
 
-## 3. SOAP — `com.sun.xml.ws:jaxws-rt` + wsimport tự gen stub
+## 3. SOAP — `zeep` (no codegen)
 
-### Imports chuẩn (theo từng bài, package gen riêng)
-```java
-import soap.q2211.generated.DataService;        // Service class
-import soap.q2211.generated.SoapDataService;    // Port interface
-// + các DTO bài dùng: ProductY, Customer, ...
+### Imports & kết nối
+```python
+from zeep import Client
+
+WSDL = f"http://{EXAM_IP}:2221/<Service>?wsdl"
+client = Client(WSDL)            # load WSDL runtime — KHÔNG cần wsimport
 ```
 
-### Hằng số (đơn giản hơn, KHÔNG cần EXAM_IP — đã nhúng trong WSDL lúc gen)
-```java
-static final String STUDENT_CODE = "B22DCCN863";
-static final String Q_CODE       = "xxxxx";
+### Mẫu 2 phase
+```python
+# Phase 1 — request
+data = client.service.getData(STUDENT_CODE, Q_CODE)        # trả list[int]
+# hoặc
+p = client.service.requestProductY(STUDENT_CODE, Q_CODE)   # trả object có .price/.taxRate/...
+
+# ... tính ...
+
+# Phase 2 — submit (return None)
+client.service.submitDataInt(STUDENT_CODE, Q_CODE, sum_value)
 ```
 
-### Mẫu kết nối + 2 phase
-```java
-DataService service = new DataService();
-SoapDataService port = service.getSoapDataServicePort();   // port = stub thực tế
+### Mapping Service ↔ WSDL ↔ bài
 
-List<Integer> data = port.getData(STUDENT_CODE, Q_CODE);   // Phase 1
-// ... tính ...
-port.submitDataInt(STUDENT_CODE, Q_CODE, sum);             // Phase 2 — return void
-```
+| WSDL endpoint | Method điển hình | Bài dùng |
+|---------------|------------------|---------|
+| `/DataService?wsdl` | `getData`, `submitDataInt`, `submitDataString`, `submitDataIntArray`, `submitDataStringArray` | Q2211-Q2213, Q2241-Q2242 |
+| `/CharacterService?wsdl` | `requestString`, `requestStringArray`, `submitString`, `submitStringArray` | Q2221-Q2223, Q2251-Q2252 |
+| `/ObjectService?wsdl` | `requestProductY`, `submitProductY`, `requestListCustomer`, `submitListCustomer` | Q2231-Q2233, Q2261-Q2262 |
 
-### Mapping Service ↔ Port ↔ DTO (theo WSDL thực tế)
+### DTO thực tế (theo WSDL — KHÁC đề md)
 
-| Service class | Port getter | Bài dùng |
-|---------------|-------------|---------|
-| `DataService` | `getSoapDataServicePort()` → `SoapDataService` | Q2211-Q2213, Q2241-Q2242 |
-| `CharacterService` | `getSoapCharacterServicePort()` → `SoapCharacterService` | Q2221-Q2223, Q2251-Q2252 |
-| `ObjectService` | `getSoapObjectServicePort()` → `SoapObjectService` | Q2231-Q2233, Q2261-Q2262 |
-
-| DTO | Trường thực tế (KHÁC đề md) |
-|-----|----------------------------|
+| DTO | Field |
+|-----|-------|
 | `ProductY` | `discount`, `finalPrice`, `price`, `taxRate` — đều `float`, **không có** `name` |
-| `Customer` | `customerId`, `location`, `purchaseCount` (int), `totalSpent` (float) |
+| `Customer` | `customerId` (str), `location` (str), `purchaseCount` (int), `totalSpent` (float) |
 
-### Lưu ý sinh stub
-- `mvn -q compile` ở `soap/` → `jaxws-maven-plugin` chạy `wsimport` hit `http://36.50.135.242:2221/<Service>?wsdl` → sinh vào `target/generated-sources/jaxws/soap/q22xx/generated/`.
-- **Phải reach exam server lúc build**, nếu không stub không gen được.
-- `submit*` đều trả `void`, không có status string — log thủ công sau khi gọi để biết đã gửi.
+### Modify object trả về rồi submit
+```python
+p = client.service.requestProductY(STUDENT_CODE, Q_CODE)
+p.finalPrice = float(price * (1 + p.taxRate/100) * (1 - p.discount/100))
+client.service.submitProductY(STUDENT_CODE, Q_CODE, p)
+```
+
+zeep cho phép gán attribute trực tiếp vào object DTO trả về — không cần tạo object mới.
+
+### Khám phá WSDL khi không nhớ method
+```python
+client.wsdl.dump()                # in toàn bộ service/port/operation
+print(client.service.__dir__())   # list method khả dụng
+```
 
 ---
 
@@ -312,10 +298,18 @@ port.submitDataInt(STUDENT_CODE, Q_CODE, sum);             // Phase 2 — return
 |---------|------|------|------|
 | **Wire format** | JSON text | Protobuf binary | XML |
 | **Transport** | HTTP/1.1 | HTTP/2 | HTTP/1.1 |
-| **Schema** | Không bắt buộc (org.json runtime) | `.proto` → gen stub compile-time | WSDL → gen stub compile-time |
-| **Lib** | `java.net.http.HttpClient` (JDK 11+) | `grpc-netty-shaded` + plugin | `jaxws-rt` + `jaxws-maven-plugin` |
+| **Lib Python** | `requests` | `grpcio` + `grpcio-tools` | `zeep` |
+| **Schema** | Không cần | `.proto` → `python -m grpc_tools.protoc` | WSDL → zeep load runtime |
 | **Cổng exam** | 2230 | 2240 | 2221 |
-| **Phase 1** | GET `?studentCode&qCode` | `stub.request(...)` / `stub.requestTyped(...)` | `port.get<X>(student, q)` |
-| **Phase 2** | POST/PUT/PATCH `/submit` hoặc `/{requestId}` | `stub.submit(...)` / `stub.submitTyped(...)` | `port.submit<X>(student, q, answer)` |
-| **Response submit** | `{"status":"AC", ...}` | `SubmitResponse{status, message}` | **void** |
-| **Encoding param** | Cần `URLEncoder` cho path/query có ký tự lạ | Tự lo bởi protobuf | Tự lo bởi JAX-WS marshalling |
+| **Phase 1** | `requests.get(BASE, params=...)` | `stub.Request(...)` / `stub.RequestTyped(...)` | `client.service.get<X>(...)` |
+| **Phase 2** | `requests.post/put/patch(.../submit, json=...)` | `stub.Submit(...)` / `stub.SubmitTyped(...)` | `client.service.submit<X>(...)` |
+| **Response submit** | `{"status":"AC", ...}` | `SubmitResponse{status, message}` | **None** (void) |
+| **Naming** | camelCase JSON keys | snake_case (proto) | camelCase (WSDL) |
+
+## So sánh code lines (Q2011 - bài đơn giản nhất)
+
+| Java | Python |
+|------|--------|
+| ~30 dòng + 8 import | ~18 dòng + 1 import (`requests`) |
+
+Python **gọn hơn ~40%**, không cần khai báo type, không cần `HttpRequest.newBuilder()...build()`, không cần `JSONObject().put(...).put(...)`.

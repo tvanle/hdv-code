@@ -1,10 +1,21 @@
-# Build outputs
-out/
+# Maven leftovers (legacy)
 target/
-*.class
-
-# Downloaded dependencies (Maven manages these)
+out/
 lib/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.python-version
+
+# gRPC generated stubs (re-generate with `python gen_proto.py`)
+grpc/*_pb2.py
+grpc/*_pb2_grpc.py
+grpc/*_pb2.pyi
 
 # IDE
 .idea/
