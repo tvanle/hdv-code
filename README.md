@@ -8,7 +8,6 @@ Bài tập JNP chia theo 3 protocol. Mỗi file `Q<id>_<TitleTV>.py` = 1 bài, t
 hdv-code/
 ├── rest/                                       requests
 │   ├── requirements.txt
-│   ├── bai-tap/                                15 file md đề gốc
 │   ├── Q2011_TinhTongSoNguyen.py
 │   ├── Q2012_DoiSoatThanhToan.py
 │   ├── Q2021_SapXepTu.py
@@ -29,7 +28,6 @@ hdv-code/
 │   ├── gen_proto.py                            chạy 1 lần để sinh *_pb2.py
 │   ├── proto/judge.proto
 │   ├── proto/typed_judge.proto
-│   ├── bai-tap/                                9 file md
 │   ├── Q2111_TinhTongSoNguyen.py
 │   ├── Q2112_LocGiaoDichRuiRo.py
 │   ├── Q2113_PhanTichSensor.py
@@ -41,7 +39,6 @@ hdv-code/
 │   └── Q2133_KiemTraDangKyMon.py
 └── soap/                                       zeep (runtime WSDL)
     ├── requirements.txt
-    ├── bai-tap/                                15 file md
     ├── Q2211_TinhTongSoNguyen.py
     ├── Q2212_TinhTongSoChan.py
     ├── Q2213_DemSoChanLe.py
