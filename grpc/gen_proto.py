@@ -23,7 +23,7 @@ def main() -> None:
     ]
     print(" ".join(cmd))
     subprocess.check_call(cmd)
-    print("OK — stub sinh tại judge_pb2.py / typed_judge_pb2.py (+ *_grpc.py)")
+    print("OK - stub sinh tai judge_pb2.py / typed_judge_pb2.py (+ *_grpc.py)")
 
 
 if __name__ == "__main__":

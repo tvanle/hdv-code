@@ -12,10 +12,8 @@ venv/
 env/
 .python-version
 
-# gRPC generated stubs (re-generate with `python gen_proto.py`)
-grpc/*_pb2.py
-grpc/*_pb2_grpc.py
-grpc/*_pb2.pyi
+# gRPC generated stubs — COMMIT vào repo để zip download chạy được luôn
+# (anh muốn re-generate, xoá rồi chạy `python gen_proto.py`)
 
 # IDE
 .idea/
