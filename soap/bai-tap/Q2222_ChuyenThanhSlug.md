@@ -40,7 +40,7 @@ s = re.sub(r"\s+", " ", s).strip()
 return s.replace(" ", "-")
 ```
 
-Xem `Q2222_CharacterSlug.py` cùng folder.
+Xem `Q2222_ChuyenThanhSlug.py` cùng folder.
 
 ## Bẫy thường gặp
 

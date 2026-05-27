@@ -29,7 +29,7 @@ Ví dụ input `"the cat and the cat sat"` → bigram counts `the_cat=2, cat_and
 
 ## Code Python
 
-Xem `Q2251_CharacterTopBigrams.py` cùng folder.
+Xem `Q2251_TopBigram.py` cùng folder.
 
 ## Bẫy thường gặp
 

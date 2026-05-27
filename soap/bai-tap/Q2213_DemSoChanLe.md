@@ -27,7 +27,7 @@ answer = [f"EVEN={even}", f"ODD={odd}"]
 
 ## Code Python
 
-Xem `Q2213_DataCountEvenOdd.py` cùng folder.
+Xem `Q2213_DemSoChanLe.py` cùng folder.
 
 ## Bẫy thường gặp
 

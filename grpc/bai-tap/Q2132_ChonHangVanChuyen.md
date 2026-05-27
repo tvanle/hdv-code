@@ -41,7 +41,7 @@ message ShippingQuoteAnswer {
 
 ## Code Python
 
-Xem `Q2132_ObjectShippingQuote.py` cùng folder.
+Xem `Q2132_ChonHangVanChuyen.py` cùng folder.
 
 ## Bẫy thường gặp
 

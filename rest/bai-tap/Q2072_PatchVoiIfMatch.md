@@ -42,7 +42,7 @@ Body:
 
 ## Code Python
 
-Xem `Q2072_MethodPatchIfMatch.py` cùng folder.
+Xem `Q2072_PatchVoiIfMatch.py` cùng folder.
 
 ## Bẫy thường gặp
 

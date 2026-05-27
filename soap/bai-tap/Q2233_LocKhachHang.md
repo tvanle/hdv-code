@@ -29,7 +29,7 @@ selected = [c for c in all_customers
 
 ## Code Python
 
-Xem `Q2233_ObjectFilterCustomers.py` cùng folder.
+Xem `Q2233_LocKhachHang.py` cùng folder.
 
 ## Bẫy thường gặp
 

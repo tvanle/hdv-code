@@ -26,7 +26,7 @@ Round 2dp, gán `p.finalPrice`, submit.
 
 ## Code Python
 
-Xem `Q2261_ObjectFinalPricePercentDiscount.py` cùng folder.
+Xem `Q2261_TinhGiaCuoiPhanTramV2.py` cùng folder.
 
 ## Bẫy thường gặp
 

@@ -33,7 +33,7 @@ from functools import reduce
 g = reduce(gcd, (abs(v) for v in data), 0)
 ```
 
-Xem `Q2242_DataMinMaxGcdSpan.py` cùng folder.
+Xem `Q2242_MinMaxGcdSpan.py` cùng folder.
 
 ## Bẫy thường gặp
 

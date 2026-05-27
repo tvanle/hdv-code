@@ -39,7 +39,7 @@ Chọn hãng vận chuyển **rẻ nhất** đáp ứng deadline; tie thì lấy
 
 ## Code Python
 
-Xem `Q2032_ObjectShippingQuote.py` cùng folder.
+Xem `Q2032_ChonHangVanChuyen.py` cùng folder.
 
 ## Bẫy thường gặp
 

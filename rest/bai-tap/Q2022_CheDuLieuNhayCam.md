@@ -32,7 +32,7 @@ Ví dụ output: `user [EMAIL] login||call [PHONE]||token=[TOKEN] expired`
 
 ## Code Python
 
-Xem `Q2022_CharacterMaskPII.py` cùng folder.
+Xem `Q2022_CheDuLieuNhayCam.py` cùng folder.
 
 ## Bẫy thường gặp
 

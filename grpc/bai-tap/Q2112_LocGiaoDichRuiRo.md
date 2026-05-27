@@ -42,7 +42,7 @@ Output:
 
 ## Code Python
 
-Xem `Q2112_DataTransactionRisk.py` cùng folder.
+Xem `Q2112_LocGiaoDichRuiRo.py` cùng folder.
 
 ## Bẫy thường gặp
 

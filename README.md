@@ -1,6 +1,6 @@
 # Ôn luyện môn Phát triển hướng dịch vụ — PTIT (Python)
 
-Bài tập JNP chia theo 3 protocol. Mỗi file `Q<id>_<Title>.py` = 1 bài, tên file = tên class, để thẳng tại category root cho dễ track.
+Bài tập JNP chia theo 3 protocol. Mỗi file `Q<id>_<TitleTV>.py` = 1 bài, tên tiếng Việt PascalCase (không dấu) cho dễ track.
 
 ## Layout
 
@@ -8,33 +8,55 @@ Bài tập JNP chia theo 3 protocol. Mỗi file `Q<id>_<Title>.py` = 1 bài, tê
 hdv-code/
 ├── rest/                                       requests
 │   ├── requirements.txt
-│   ├── bai-tap/                                9 file md đề gốc
-│   ├── Q2011_DataSumOfIntegers.py
-│   ├── Q2012_DataPaymentReconciliation.py
-│   ├── Q2021_CharacterSortWords.py
-│   ├── Q2022_CharacterMaskPII.py
-│   ├── Q2031_ObjectFinalPrice.py
-│   ├── Q2032_ObjectShippingQuote.py
-│   ├── Q2041_MethodPut.py
-│   ├── Q2051_HeaderChecksum.py
-│   ├── Q2061_PathProductQuery.py
-│   ├── Q2071_MethodPutAudit.py
-│   ├── Q2072_MethodPatchIfMatch.py
-│   ├── Q2081_HeaderChecksumReplay.py
-│   ├── Q2082_HeaderHmacSignature.py
-│   ├── Q2091_PathInvoiceQuery.py
-│   └── Q2092_PathOverdueCustomer.py
+│   ├── bai-tap/                                15 file md đề gốc
+│   ├── Q2011_TinhTongSoNguyen.py
+│   ├── Q2012_DoiSoatThanhToan.py
+│   ├── Q2021_SapXepTu.py
+│   ├── Q2022_CheDuLieuNhayCam.py
+│   ├── Q2031_TinhGiaCuoiPhanTram.py
+│   ├── Q2032_ChonHangVanChuyen.py
+│   ├── Q2041_PutCoBan.py
+│   ├── Q2051_KiemTraChecksum.py
+│   ├── Q2061_TruyVanSanPham.py
+│   ├── Q2071_PutVoiAudit.py
+│   ├── Q2072_PatchVoiIfMatch.py
+│   ├── Q2081_ChecksumReplay.py
+│   ├── Q2082_KyHmacSha256.py
+│   ├── Q2091_TruyVanHoaDon.py
+│   └── Q2092_KhachNoQuaHan.py
 ├── grpc/                                       grpcio + grpcio-tools
 │   ├── requirements.txt
 │   ├── gen_proto.py                            chạy 1 lần để sinh *_pb2.py
 │   ├── proto/judge.proto
 │   ├── proto/typed_judge.proto
-│   ├── bai-tap/                                3 file md
-│   ├── Q2111_DataSumOfIntegers.py … Q2133_ObjectEnrollment.py  (9 file)
+│   ├── bai-tap/                                9 file md
+│   ├── Q2111_TinhTongSoNguyen.py
+│   ├── Q2112_LocGiaoDichRuiRo.py
+│   ├── Q2113_PhanTichSensor.py
+│   ├── Q2121_SapXepTu.py
+│   ├── Q2122_DemTuKhoaTicket.py
+│   ├── Q2123_DemSeverityLog.py
+│   ├── Q2131_TinhGiaCuoiTruTien.py
+│   ├── Q2132_ChonHangVanChuyen.py
+│   └── Q2133_KiemTraDangKyMon.py
 └── soap/                                       zeep (runtime WSDL)
     ├── requirements.txt
-    ├── bai-tap/                                3 file md
-    └── Q2211_DataSumOfIntegers.py … Q2262_ObjectFilterSortVipCustomers.py  (15 file)
+    ├── bai-tap/                                15 file md
+    ├── Q2211_TinhTongSoNguyen.py
+    ├── Q2212_TinhTongSoChan.py
+    ├── Q2213_DemSoChanLe.py
+    ├── Q2221_DaoNguocChuoi.py
+    ├── Q2222_ChuyenThanhSlug.py
+    ├── Q2223_CheLogArray.py
+    ├── Q2231_TinhGiaCuoiPhanTram.py
+    ├── Q2232_TinhGiaCuoiTruTien.py
+    ├── Q2233_LocKhachHang.py
+    ├── Q2241_DemSoNguyenToChecksum.py
+    ├── Q2242_MinMaxGcdSpan.py
+    ├── Q2251_TopBigram.py
+    ├── Q2252_CheVaSapXepLog.py
+    ├── Q2261_TinhGiaCuoiPhanTramV2.py
+    └── Q2262_LocVaSapXepKhachVip.py
 ```
 
 ## Trước khi chạy
@@ -64,16 +86,16 @@ Yêu cầu: **Python ≥ 3.9**.
 ```powershell
 # REST — chạy thẳng
 cd rest
-python .\Q2011_DataSumOfIntegers.py
+python .\Q2011_TinhTongSoNguyen.py
 
 # gRPC — sinh stub 1 lần rồi chạy
 cd ..\grpc
 python gen_proto.py           # tạo judge_pb2.py / typed_judge_pb2.py (+ *_grpc.py)
-python .\Q2111_DataSumOfIntegers.py
+python .\Q2111_TinhTongSoNguyen.py
 
 # SOAP — zeep tự load WSDL runtime, không cần gen stub
 cd ..\soap
-python .\Q2211_DataSumOfIntegers.py
+python .\Q2211_TinhTongSoNguyen.py
 ```
 
 ## Lưu ý đề thi

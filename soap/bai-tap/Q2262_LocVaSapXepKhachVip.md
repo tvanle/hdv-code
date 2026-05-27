@@ -29,7 +29,7 @@ vip.sort(key=lambda c: (-c.totalSpent, c.customerId))
 
 ## Code Python
 
-Xem `Q2262_ObjectFilterSortVipCustomers.py` cùng folder.
+Xem `Q2262_LocVaSapXepKhachVip.py` cùng folder.
 
 ## Bẫy thường gặp
 

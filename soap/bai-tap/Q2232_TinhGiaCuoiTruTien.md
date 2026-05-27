@@ -30,7 +30,7 @@ Round 2dp, set `p.finalPrice = float(finalPrice)`, submit lại.
 
 ## Code Python
 
-Xem `Q2232_ObjectFinalPriceAbsoluteDiscount.py` cùng folder.
+Xem `Q2232_TinhGiaCuoiTruTien.py` cùng folder.
 
 ## Bẫy thường gặp
 

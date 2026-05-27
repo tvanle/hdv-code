@@ -31,7 +31,7 @@ Ví dụ: `primeCount=7;checksum=42135`.
 
 ## Code Python
 
-Xem `Q2241_DataPrimeCountChecksum.py` cùng folder.
+Xem `Q2241_DemSoNguyenToChecksum.py` cùng folder.
 
 ## Bẫy thường gặp
 

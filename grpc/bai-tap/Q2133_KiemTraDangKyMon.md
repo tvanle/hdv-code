@@ -35,7 +35,7 @@ message EnrollmentAnswer {
 
 ## Code Python
 
-Xem `Q2133_ObjectEnrollment.py` cùng folder.
+Xem `Q2133_KiemTraDangKyMon.py` cùng folder.
 
 ## Bẫy thường gặp
 

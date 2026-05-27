@@ -36,7 +36,7 @@ def severity_key(line):
 redacted.sort(key=severity_key)   # Python sort ổn định
 ```
 
-Xem `Q2252_CharacterMaskSortBySeverity.py` cùng folder.
+Xem `Q2252_CheVaSapXepLog.py` cùng folder.
 
 ## Bẫy thường gặp
 

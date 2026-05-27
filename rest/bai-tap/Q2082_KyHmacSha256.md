@@ -39,7 +39,7 @@ requests.post(url, json=body, headers={"X-Signature": sig})
 
 ## Code Python
 
-Xem `Q2082_HeaderHmacSignature.py` cùng folder.
+Xem `Q2082_KyHmacSha256.py` cùng folder.
 
 ## Bẫy thường gặp
 

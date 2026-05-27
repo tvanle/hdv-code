@@ -50,7 +50,7 @@ Response:
 
 ## Code Python
 
-Xem `Q2012_DataPaymentReconciliation.py` cùng folder.
+Xem `Q2012_DoiSoatThanhToan.py` cùng folder.
 
 ## Bẫy thường gặp
 

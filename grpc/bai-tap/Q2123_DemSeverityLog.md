@@ -34,7 +34,7 @@ Output: `counts = {INFO:2, WARN:1, ERROR:1}`, `values = ["U001", "R5", "D99"]`.
 
 ## Code Python
 
-Xem `Q2123_CharacterSeverityCounts.py` cùng folder.
+Xem `Q2123_DemSeverityLog.py` cùng folder.
 
 ## Bẫy thường gặp
 

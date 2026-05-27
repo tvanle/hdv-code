@@ -29,7 +29,7 @@ Che dữ liệu nhạy cảm trong **danh sách dòng log** (mỗi dòng là 1 c
 
 ## Code Python
 
-Xem `Q2223_CharacterMaskLogArray.py` cùng folder.
+Xem `Q2223_CheLogArray.py` cùng folder.
 
 ## Bẫy thường gặp
 

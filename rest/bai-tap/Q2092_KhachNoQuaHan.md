@@ -36,7 +36,7 @@ GET /api/rest/path/{URL-encoded customerId}?studentCode=...&qCode=...&requestId=
 
 ## Code Python
 
-Xem `Q2092_PathOverdueCustomer.py` cùng folder.
+Xem `Q2092_KhachNoQuaHan.py` cùng folder.
 
 ## Bẫy thường gặp
 

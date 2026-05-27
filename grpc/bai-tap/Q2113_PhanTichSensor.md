@@ -35,7 +35,7 @@ Ví dụ `n = 100`: idx = `ceil(95) - 1 = 94` → value thứ 95 sau khi sort.
 
 ## Code Python
 
-Xem `Q2113_DataSensorTelemetry.py` cùng folder.
+Xem `Q2113_PhanTichSensor.py` cùng folder.
 
 ## Bẫy thường gặp
 

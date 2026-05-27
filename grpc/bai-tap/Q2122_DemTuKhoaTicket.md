@@ -37,7 +37,7 @@ message TextBatchAnswer {
 
 ## Code Python
 
-Xem `Q2122_CharacterTicketTags.py` cùng folder.
+Xem `Q2122_DemTuKhoaTicket.py` cùng folder.
 
 ## Bẫy thường gặp
 

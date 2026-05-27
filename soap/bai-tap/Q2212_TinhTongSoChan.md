@@ -25,7 +25,7 @@ sum_even = sum(n for n in data if n % 2 == 0)
 
 ## Code Python
 
-Xem `Q2212_DataSumEven.py` cùng folder.
+Xem `Q2212_TinhTongSoChan.py` cùng folder.
 
 ## Bẫy thường gặp
 
